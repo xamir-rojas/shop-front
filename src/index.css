@@ -2,3 +2,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Bungee  font-family */
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+/* Josefin Sans font-family */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300;1,700&display=swap');
+
+#root{
+  @apply min-h-screen
+  p-8 
+  bg-white
+  flex justify-center items-center;
+}
+
+.h1{
+  @apply font-display text-5xl sm:text-6xl lg:text-7xl sm:text-center;
+}
+.h2{
+  @apply font-display text-4xl;
+}
+
+.h3{
+  @apply font-display  text-3xl;
+}
+.h4{
+  @apply text-xl md:text-2xl
+  text-center 
+  font-bold;
+}
