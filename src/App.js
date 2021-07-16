@@ -9,6 +9,7 @@ export class App extends Component {
       <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
         </Switch>
       </BrowserRouter>
     );

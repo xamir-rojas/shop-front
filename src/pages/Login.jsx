@@ -1,6 +1,5 @@
 import React from 'react';
 import '../components/styles/Login.css';
-import {Fragment} from "react";
 import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
