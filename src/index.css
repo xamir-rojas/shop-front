@@ -56,3 +56,13 @@
   transform hover:scale-105
   ;
 }
+
+.link{
+  @apply m-2 
+  font-semibold underline text-base sm:text-lg  text-blue-600 hover:text-blue-900
+  ;
+}
+
+.footer{
+  @apply absolute bottom-2  w-full text-center;
+}
