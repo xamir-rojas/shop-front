@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300;1,700&display=swap');
 
 #root{
-  @apply min-h-screen
+  @apply min-h-screen h-screen
   p-8 
   bg-white
   flex justify-center items-center;
@@ -29,6 +29,19 @@
   @apply text-xl md:text-2xl
   text-center 
   font-bold;
+}
+.input{
+  @apply m-4
+  py-1 px-2
+  placeholder-gray-400
+  border-gray-400
+  border-2
+  focus:border-blue-600
+  focus:placeholder-blue-600
+  rounded-lg
+  text-blue-600
+  font-medium
+  focus:outline-none;
 }
 
 .btn--primary{
