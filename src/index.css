@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300;1,700&display=swap');
 
 #root{
-  @apply min-h-screen
+  @apply min-h-screen h-screen
   p-8 
   bg-white
   flex justify-center items-center;
@@ -30,6 +30,19 @@
   text-center 
   font-bold;
 }
+.input{
+  @apply m-4
+  py-1 px-2
+  placeholder-gray-400
+  border-gray-400
+  border-2
+  focus:border-blue-600
+  focus:placeholder-blue-600
+  rounded-lg
+  text-blue-600
+  font-medium
+  focus:outline-none;
+}
 
 .btn--primary{
   @apply m-2 p-4 mt-4
@@ -42,4 +55,14 @@
   focus:outline-none
   transform hover:scale-105
   ;
+}
+
+.link{
+  @apply m-2 
+  font-semibold underline text-base sm:text-lg  text-blue-600 hover:text-blue-900
+  ;
+}
+
+.footer{
+  @apply absolute bottom-2  w-full text-center;
 }
