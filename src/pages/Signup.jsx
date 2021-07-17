@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import "../components/styles/Signup.css";
-import { CognitoUserPool } from "amazon-cognito-identity-js";
 import { useHistory } from "react-router-dom";
+import UserPool from "../UserPool";
 
-export default Signup => {
+ const Signup =() => {
   let history = useHistory();
-  const poolData = {
-    ClientId: "3unsnaq2372t4pi95h8kle1dhf",
-    UserPoolId: "us-east-2_EwgRcRgUs",
-  };
-    // Password1!
-  const userPool = new CognitoUserPool(poolData);
+  
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,11 +13,11 @@ export default Signup => {
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    userPool.signUp(email, password, [], null, (err, data) => {
+    UserPool.signUp(email, password, [], null, (err, data) => {
       if (err) console.error(err);
       console.log(data);
     });
-    history.push("/home");
+    history.push("/login");
   };
 
   return (
@@ -50,3 +45,4 @@ export default Signup => {
     </>
   );
 };
+export default Signup;

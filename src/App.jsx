@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Base from "./layouts/Base";
+//import Base from "./layouts/Base";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 
