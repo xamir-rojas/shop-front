@@ -10,17 +10,26 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {authenticate} = useContext(AccountContext);
+  const [error, setErrorShow] = useState(false);
+
+  const [success, setSuccessShow] = useState(false);
+  
+  const { authenticate } = useContext(AccountContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    event.stopPropagation();
-    authenticate(email,password).then(data => {
-      console.log('Logged in !',data);
-    }).catch(err=> {
-      console.log('Failed to login!',err);
-    })
-    history.push("/home");
+    setSuccessShow(false);
+    setErrorShow(false);
+    authenticate(email, password)
+      .then((data) => {
+        console.log("Logged in!", data);
+        history.push("/home");
+        setSuccessShow(true);
+      })
+      .catch((err) => {
+        console.error("Failed to login!", err);
+        setErrorShow(true);
+      });
   };
 
   return (
@@ -29,6 +38,17 @@ const Login = () => {
         <div className="w-full flex justify-center m-4 p-4">
           <h1 className="h1 text-gray-900">Log in </h1>
         </div>
+
+        {error && (
+          <div className="bg-red-400 text-center w-full p-2">
+            <h4 className="h4 text-white">Failed to Login</h4>
+          </div>
+        )}
+        {success && (
+          <div className="bg-green-400 text-center w-full p-2">
+            <h4 className="h4 text-white">Logged in!</h4>
+          </div>
+        )}
         <form
           action=""
           className="flex flex-col w-2/3 "
