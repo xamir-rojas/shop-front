@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../components/styles/Login.css";
 import { Link } from "react-router-dom";
-import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
-import UserPool from "../UserPool";
 import { useHistory } from "react-router-dom";
+import { AccountContext } from "../Account";
 
 const Login = () => {
   let history = useHistory();
@@ -11,28 +10,16 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const {authenticate} = useContext(AccountContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const user = new CognitoUser({
-      Username: email,
-      Pool: UserPool,
-    });
-    const authDetails = new AuthenticationDetails({
-      Username: email,
-      Password: password,
-    });
-    user.authenticateUser(authDetails, {
-      onSuccess: (data) => {
-        console.log("onSuccess:", data);
-      },
-      onFailure: (data) => {
-        console.log("onFailure:", data);
-      },
-      newPasswordRequired: (data) => {
-        console.log("newPasswordRequired:", data);
-      },
-    });
+    authenticate(email,password).then(data => {
+      console.log('Logged in !',data);
+    }).catch(err=> {
+      console.log('Failed to login!',err);
+    })
     history.push("/home");
   };
 
