@@ -13,12 +13,12 @@ export class App extends Component {
       <BrowserRouter>
         <Switch>
           <Account>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <MainLayout>
-            <Route exact path="/home" component={Home} />
-          </MainLayout>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <MainLayout>
+              <Route exact path="/home" component={Home} />
+            </MainLayout>
           </Account>
         </Switch>
       </BrowserRouter>
