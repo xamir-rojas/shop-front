@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300;1,700&display=swap');
 
 #root{
-  @apply min-h-screen h-screen
+  @apply min-h-screen 
   p-8 
   bg-white
   flex justify-center items-center;

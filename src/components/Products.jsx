@@ -3,20 +3,29 @@ import ModalForm from "./ModalForm";
 
 const Products = (props) => {
   const [item, setItem] = useState({});
-  const [modalIsOpen, setModalIsOpem] = useState(false);
-  
+  const [onScreen, setOnScreem] = useState(false);
+
   const handleClick = (event, item) => {
     setItem(item);
-    setModalIsOpem(true);
+    setOnScreem(true);
   };
 
   const handleClose = () => {
     setItem({});
-    setModalIsOpem(false);
-  }
+    setOnScreem(false);
+  };
 
   return (
+    <>
+      <ModalForm
+        item={item}
+        onScreen={onScreen}
+        handleClose={handleClose}
+      ></ModalForm>
+    
     <div className="products__list">
+    
+
       {props.products.map((item) => {
         return (
           <div
@@ -39,10 +48,8 @@ const Products = (props) => {
           </div>
         );
       })}
-      <ModalForm item={item} modalIsOpen={modalIsOpen} handleClose={handleClose}>
-      </ModalForm>
-      
     </div>
+    </>
   );
 };
 
