@@ -5,8 +5,10 @@ import Products from "../components/Products";
 import "../components/styles/Home.css";
 
 const Home = () => {
-  const [status, setStatus] = useState(false);
   const { getSession } = useContext(AccountContext);
+  const [status, setStatus] = useState(false);
+  const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const load = () => {
@@ -33,18 +35,18 @@ const Home = () => {
     fetchProducts();
   }, [getSession]);
 
-  const [search, setSearch] = useState("");
-
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };
 
-  const [products, setProducts] = useState([]);
+  const filteredList = useMemo(
+    () =>
+      products.filter((item) => {
+        return item.name.toLowerCase().includes(search.toLowerCase());
+      }),
+    [products, search]
+  );
 
-  const filteredList = useMemo(() => 
-    products.filter((item) => {
-      return item.name.toLowerCase().includes(search.toLowerCase());
-    }), [products, search] );
   return (
     <>
       {status ? (

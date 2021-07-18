@@ -12,3 +12,17 @@
     transform hover:scale-110
     flex justify-around items-center;
 }
+.modal___form{
+    @apply flex flex-col justify-center items-center;
+}
+.modalInput__container{
+    @apply group flex w-1/2 items-center justify-start   focus:border-blue-300;
+}
+
+.modalInput--title{
+    @apply text-3xl sm:text-5xl font-display text-indigo-500 w-1/2 border-none outline-none focus:border-transparent ;
+}
+
+.modalInput{
+    @apply text-2xl sm:text-4xl font-display text-gray-600 w-1/2 border-none outline-none focus:border-transparent ;
+}
