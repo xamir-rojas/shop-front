@@ -1,52 +1,56 @@
 import React, { createContext } from "react";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import Pool from "./UserPool";
+import { useHistory } from "react-router-dom";
+
 
 const AccountContext = createContext();
 
 const Account = (props) => {
-    const getSession = async () =>
+  let history = useHistory();
+  const getSession = async () =>
     await new Promise((resolve, reject) => {
-      const user = Pool.getCurrentUser()
+      const user = Pool.getCurrentUser();
       if (user) {
         user.getSession(async (err, session) => {
           if (err) {
-            reject()
+            reject();
           } else {
             const attributes = await new Promise((resolve, reject) => {
               user.getUserAttributes((err, attributes) => {
                 if (err) {
-                  reject(err)
+                  reject(err);
                 } else {
-                  const results = {}
+                  const results = {};
 
                   for (let attribute of attributes) {
-                    const { Name, Value } = attribute
-                    results[Name] = Value
+                    const { Name, Value } = attribute;
+                    results[Name] = Value;
                   }
 
-                  resolve(results)
+                  resolve(results);
                 }
-              })
-            })
+              });
+            });
 
-            const token = session.getIdToken().getJwtToken()
+            const token = session.getIdToken().getJwtToken();
 
             resolve({
               user,
               headers: {
                 Authorization: token,
+                Accept: "application/json",
+                "Content-Type": "application/json",
               },
               ...session,
               ...attributes,
-            })
+            });
           }
-        })
+        });
       } else {
-        reject()
+        reject();
       }
-    })
-
+    });
 
   const authenticate = async (Username, Password) =>
     await new Promise((resolve, reject) => {
@@ -70,9 +74,19 @@ const Account = (props) => {
         },
       });
     });
+
+  const logout = () => {
+    const user = Pool.getCurrentUser();
+    if (user) {
+      user.signOut();
+      history.push('/login');
+    }else{
+      history.push('/login');
+    }
+  };
   // context provider
   return (
-    <AccountContext.Provider value={{ authenticate , getSession }}>
+    <AccountContext.Provider value={{ authenticate, getSession, logout }}>
       {props.children}
     </AccountContext.Provider>
   );
