@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
-import { AccountContext } from "../Account";
+import React from "react";
 
 const Products = (props) => {
 
@@ -9,9 +8,17 @@ const Products = (props) => {
         return (
           <div
             key={item.name}
-            className="product m-2 p-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6 bg-gray-400"
+            className="product__container"
           >
-            {item.name}
+              <div className="product_title">
+                  <h4 className="h4 text-blue-500 group-hover:text-white">{item.name} </h4></div>
+            <div className="product_info">
+                <p className="group-hover:text-white">
+                    {"Calories :" + item.calories} <br/>
+                    {"Protein :" + item.protein} <br/>
+                    {"Rating :" + item.rating} <br/>
+                </p>
+            </div>
           </div>
         );
       })}
