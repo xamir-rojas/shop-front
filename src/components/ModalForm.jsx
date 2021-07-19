@@ -2,71 +2,47 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AccountContext } from "../Account";
 
-const ModalForm = (props) => {
+const ModalForm = ({item,handleClose}) => {
   const { getSession } = useContext(AccountContext);
-
-  /*
-  const url =
-  'https://nztyy2xzte.execute-api.us-east-1.amazonaws.com/Prod/fetch_product?name='+ props.item;
-  
-  useEffect(() => {
-    const fetchProduct = () => {
-      getSession().then(async ({ headers }) => {
-        console.log('url :', url);
-        console.log("headers: ", headers);
-        const response = await fetch(url, {
-          method: "GET",
-          headers: headers,
-        });
-        var temp_data = await response.json();
-        const products_array = JSON.parse(temp_data.body);
-        console.log(products_array);
-      });
-    };
-    fetchProduct();
-  }, []);
-*/
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm();
-
+  
   const onSubmit = (data) => {
-    console.log(data);
     const putProducts = () => {
       getSession().then(async ({ headers }) => {
-        console.log(data.name);
-        const url =
-          "https://nztyy2xzte.execute-api.us-east-1.amazonaws.com/Prod/put_product";
-        console.log(url);
-        console.log("headers: ", headers);
-
+        const removeEmpty = (obj) => {
+          Object.keys(obj).forEach(
+            (k) => !obj[k] && obj[k] !== undefined && delete obj[k]
+          );
+          return obj;
+        };
+        const params = removeEmpty(data);
+        console.log(params);
+        var url = new URL('./put_product', 'https://if8prmb4yi.execute-api.us-east-1.amazonaws.com/Prod/');
+          
         const response = await fetch(url, {
           method: "PUT",
           headers: headers,
           body: JSON.stringify({
             name: data.name,
-            featuresPair: {
-              calories: parseInt(data.calories),
-            },
+            featuresPair: params,
           }),
         });
         var temp_data = await response.json();
-        const products_array = JSON.parse(temp_data.body);
-        console.log(products_array);
+        console.log(temp_data.statusCode);
       });
     };
     putProducts();
   };
-  console.log("errors :", errors);
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className={props.onScreen ? "modal___form" : "hidden"}
+      className="modal___form"
     >
-      <div className="absolute top-2 right-2" onClick={props.handleClose}>
+      <div className="absolute top-2 right-2" onClick={handleClose}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-10 w-10 hover:text-red-500"
@@ -86,7 +62,7 @@ const ModalForm = (props) => {
           type="text"
           placeholder="name"
           {...register("name", {})}
-          defaultValue={props.item.name}
+          defaultValue={item.name}
           className="modalInput--title"
         />
       </div>
@@ -96,7 +72,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="calories"
           {...register("calories", {})}
-          defaultValue={props.item.calories}
+          defaultValue={item.calories}
           className="modalInput"
         />
       </div>
@@ -106,7 +82,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="carbo"
           {...register("carbo", {})}
-          defaultValue={props.item.carbo}
+          defaultValue={item.carbo}
           className="modalInput"
         />
       </div>
@@ -116,7 +92,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="cups"
           {...register("cups", {})}
-          defaultValue={props.item.cups}
+          defaultValue={item.cups}
           className="modalInput"
         />
       </div>
@@ -126,7 +102,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="fat"
           {...register("fat", {})}
-          defaultValue={props.item.fat}
+          defaultValue={item.fat}
           className="modalInput"
         />
       </div>
@@ -136,7 +112,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="fiber"
           {...register("fiber", {})}
-          defaultValue={props.item.fiber}
+          defaultValue={item.fiber}
           className="modalInput"
         />
       </div>
@@ -146,7 +122,7 @@ const ModalForm = (props) => {
           type="text"
           placeholder="mfr"
           {...register("mfr", {})}
-          defaultValue={props.item.mfr}
+          defaultValue={item.mfr}
           className="modalInput"
         />
       </div>
@@ -156,7 +132,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="potass"
           {...register("potass", {})}
-          defaultValue={props.item.potass}
+          defaultValue={item.potass}
           className="modalInput"
         />
       </div>
@@ -166,7 +142,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="protein"
           {...register("protein", {})}
-          defaultValue={props.item.protein}
+          defaultValue={item.protein}
           className="modalInput"
         />
       </div>
@@ -176,7 +152,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="rating"
           {...register("rating", {})}
-          defaultValue={props.item.rating}
+          defaultValue={item.rating}
           className="modalInput"
         />
       </div>
@@ -186,7 +162,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="shelf"
           {...register("shelf", {})}
-          defaultValue={props.item.shelf}
+          defaultValue={item.shelf}
           className="modalInput"
         />
       </div>
@@ -196,7 +172,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="sodium"
           {...register("sodium", {})}
-          defaultValue={props.item.sodium}
+          defaultValue={item.sodium}
           className="modalInput"
         />
       </div>
@@ -206,7 +182,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="sugars"
           {...register("sugars", {})}
-          defaultValue={props.item.sugars}
+          defaultValue={item.sugars}
           className="modalInput"
         />
       </div>
@@ -216,7 +192,7 @@ const ModalForm = (props) => {
           type="text"
           placeholder="type"
           {...register("type", {})}
-          defaultValue={props.item.type}
+          defaultValue={item.type}
           className="modalInput"
         />
       </div>
@@ -226,7 +202,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="vitamins"
           {...register("vitamins", {})}
-          defaultValue={props.item.vitamins}
+          defaultValue={item.vitamins}
           className="modalInput"
         />
       </div>
@@ -236,7 +212,7 @@ const ModalForm = (props) => {
           type="number"
           placeholder="weight"
           {...register("weight", {})}
-          defaultValue={props.item.weight}
+          defaultValue={item.weight}
           className="modalInput"
         />
       </div>
@@ -248,7 +224,7 @@ const ModalForm = (props) => {
         <button
           type="button"
           className="btn--primary"
-          onClick={props.handleClose}
+          onClick={handleClose}
         >
           {" "}
           Close

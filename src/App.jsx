@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import { Account } from "./Account";
+import CreateProduct from "./pages/CreateProduct";
 
 export class App extends Component {
   render() {
@@ -18,6 +19,7 @@ export class App extends Component {
             <Route exact path="/signup" component={Signup} />
             <MainLayout>
               <Route exact path="/home" component={Home} />
+              <Route exact path="/products/create" component={CreateProduct} />
             </MainLayout>
           </Account>
         </Switch>

@@ -17,15 +17,13 @@ const Products = (props) => {
 
   return (
     <>
+    {onScreen ?
       <ModalForm
         item={item}
-        onScreen={onScreen}
         handleClose={handleClose}
-      ></ModalForm>
-    
+      ></ModalForm> : <></>
+    }
     <div className="products__list">
-    
-
       {props.products.map((item) => {
         return (
           <div

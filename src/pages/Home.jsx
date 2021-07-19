@@ -20,7 +20,7 @@ const Home = () => {
     const fetchProducts = () => {
       getSession().then(async ({ headers }) => {
         const url =
-          "https://nztyy2xzte.execute-api.us-east-1.amazonaws.com/Prod/fetch_products";
+          "https://if8prmb4yi.execute-api.us-east-1.amazonaws.com/Prod/fetch_products";
         console.log("headers: ", headers);
         const response = await fetch(url, {
           method: "GET",
@@ -30,6 +30,7 @@ const Home = () => {
         const products_array = JSON.parse(temp_data.body);
         console.log(products_array);
         setProducts(products_array);
+        console.log(temp_data.statusCode)
       });
     };
     fetchProducts();

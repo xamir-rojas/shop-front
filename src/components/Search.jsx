@@ -8,7 +8,7 @@ const Search = (props) => {
           <h3 className="h3">Home Page</h3>
             <input
               type="text"
-              className="input w-full"
+              className="search__input"
               placeholder="Search any product"
               value={props.search}
               onChange={props.handleSearch}
