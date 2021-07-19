@@ -13,15 +13,15 @@
     flex justify-around items-center;
 }
 .modal___form{
-    @apply relative flex flex-col justify-center items-center w-full sm:w-3/4 md:w-5/12 p-4 border-4 border-black ;
+    @apply relative flex flex-col justify-center items-start w-full sm:w-11/12 md:w-1/2 p-4 border-4 border-black ;
 }
 
 .modalInput__container{
-    @apply group flex w-auto items-center justify-start ;
+    @apply group flex flex-col sm:flex-row  items-start justify-start m-2 ;
 }
 
 .modalInput--title{
-    @apply font-display text-2xl sm:text-5xl  text-indigo-500 w-2/3 border-none outline-none focus:border-transparent ;
+    @apply w-full font-sans text-2xl sm:text-5xl text-indigo-500  border-2 sm:border-none sm:outline-none sm:focus:border-transparent ;
 }
 
 .modalInput{

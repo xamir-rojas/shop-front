@@ -31,7 +31,8 @@
   font-bold;
 }
 .input{
-  @apply m-4
+  @apply 
+  m-4
   py-1 px-2
   placeholder-gray-400
   border-gray-400

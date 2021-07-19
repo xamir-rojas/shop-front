@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AccountContext } from "../Account";
 
 const Navbar = () => {
+  
   const { logout } = useContext(AccountContext);
   return (
     <>
@@ -11,9 +12,9 @@ const Navbar = () => {
           Shop
         </Link>
         <div className="flex">
-          <Link className="h4 m-4 text-blue-600" to="/home">Show Items</Link>
-          <Link className="h4 m-4 text-gray-700">Create Items</Link>
-          <Link className="h4 m-4 text-gray-700 hover:text-red-400" onClick={logout}>Logout</Link>
+          <Link className="h4 m-4 text-gray-700" to="/home">Show Items</Link>
+          <Link className="h4 m-4 text-gray-700" to="/products/create">Create Items</Link>
+          <button className="h4 m-4 text-gray-700 hover:text-blue-600" onClick={logout}>Logout</button>
         </div>
       </div>
     </>
