@@ -20,8 +20,8 @@ const ModalForm = ({item,handleClose}) => {
         };
         const params = removeEmpty(data);
         console.log(params);
-        var url = 
-          "https://nztyy2xzte.execute-api.us-east-1.amazonaws.com/Prod/put_product";
+        var url = new URL('./put_product', 'https://if8prmb4yi.execute-api.us-east-1.amazonaws.com/Prod/');
+          
         const response = await fetch(url, {
           method: "PUT",
           headers: headers,
@@ -31,7 +31,7 @@ const ModalForm = ({item,handleClose}) => {
           }),
         });
         var temp_data = await response.json();
-        console.log(temp_data);
+        console.log(temp_data.statusCode);
       });
     };
     putProducts();

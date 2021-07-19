@@ -26,10 +26,8 @@ const CreateProduct = () => {
         };
 
         const params = removeEmpty(data);
-
-        var url = new URL(
-          "https://nztyy2xzte.execute-api.us-east-1.amazonaws.com/Prod/post_product/"
-        );
+        
+        var url = new URL('./post_product', 'https://if8prmb4yi.execute-api.us-east-1.amazonaws.com/Prod/');
 
         Object.entries(params).forEach(([k, v]) =>
           url.searchParams.append(k, v)
@@ -43,6 +41,7 @@ const CreateProduct = () => {
         });
         var temp_data = await response.json();
         console.log(temp_data)
+        console.log(temp_data.statusCode)
       });
     };
     postProduct();
