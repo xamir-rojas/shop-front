@@ -28,15 +28,15 @@ const Products = (props) => {
         return (
           <div
             key={item.name}
-            className="product__container"
+            className="product__container overflow"
             onClick={(event) => handleClick(event, item)}
           >
-            <div className="product_title">
+            <div className="product_title overflow-hidden max-h-28 ">
               <h4 className="h4 text-blue-500 group-hover:text-white">
                 {item.name}{" "}
               </h4>
             </div>
-            <div className="product_info">
+            <div className="product_info overflow-hidden max-h-28">
               <p className="group-hover:text-white">
                 {"Calories :" + item.calories} <br />
                 {"Protein :" + item.protein} <br />
