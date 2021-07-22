@@ -40,7 +40,23 @@ const Login = () => {
         </div>
 
         {error && (
-          <div className="bg-red-400 text-center w-full p-2">
+          <div className="error__container">
+            <h4 className="h4 text-white mr-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </h4>
             <h4 className="h4 text-white">Failed to Login</h4>
           </div>
         )}

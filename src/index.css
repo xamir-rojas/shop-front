@@ -80,3 +80,7 @@
 .footer{
   @apply absolute bottom-2  w-full text-center;
 }
+
+.error__container{
+  @apply bg-red-400 w-full p-2 m-2 max-h-20 max-w-sm overflow-auto flex;
+}
