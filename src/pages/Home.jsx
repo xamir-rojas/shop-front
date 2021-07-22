@@ -30,7 +30,7 @@ const Home = () => {
         const products_array = JSON.parse(temp_data.body);
         console.log(products_array);
         setProducts(products_array);
-        console.log(temp_data.statusCode)
+        console.log(temp_data.statusCode);
       });
     };
     fetchProducts();
@@ -51,10 +51,10 @@ const Home = () => {
   return (
     <>
       {status ? (
-        <div className="home__container">
-          <Search handleSearch={handleSearch} search={search}></Search>
-          <Products products={filteredList}></Products>
-        </div>
+          <div className="home__container">
+            <Search handleSearch={handleSearch} search={search}></Search>
+            <Products products={filteredList}></Products>
+          </div>
       ) : (
         <h1> </h1>
       )}

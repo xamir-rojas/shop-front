@@ -7,6 +7,7 @@ import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import { Account } from "./Account";
 import CreateProduct from "./pages/CreateProduct";
+import RouteWithLayout from "./layouts/RouteWithLayout";
 
 export class App extends Component {
   render() {
@@ -17,10 +18,8 @@ export class App extends Component {
             <Route exact path="/" component={Login} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <MainLayout>
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/products/create" component={CreateProduct} />
-            </MainLayout>
+            <RouteWithLayout exact path="/home" component={Home} layout={MainLayout}/>
+            <RouteWithLayout exact path="/products/create" component={CreateProduct} layout={MainLayout}/>
           </Account>
         </Switch>
       </BrowserRouter>
