@@ -1,4 +1,4 @@
-.login__container{
+.form__container{
     @apply p-6 
     w-full
     lg:w-1/2
@@ -8,10 +8,3 @@
     text-center
     flex flex-col justify-center items-center;
 }
-
-.login__footer{
-    @apply 
-    flex flex-col sm:flex-row justify-center items-center
-    ;
-}
-
