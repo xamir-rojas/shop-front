@@ -19,19 +19,21 @@ const ModalForm = ({item,handleClose}) => {
           return obj;
         };
         const params = removeEmpty(data);
+        const name = data.name
+        delete params.name;
         console.log(params);
         var url = new URL('./put_product', 'https://if8prmb4yi.execute-api.us-east-1.amazonaws.com/Prod/');
-          
         const response = await fetch(url, {
           method: "PUT",
           headers: headers,
           body: JSON.stringify({
-            name: data.name,
+            name: name,
             featuresPair: params,
           }),
         });
         var temp_data = await response.json();
         console.log(temp_data.statusCode);
+        console.log(temp_data);
       });
     };
     putProducts();
